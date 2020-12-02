@@ -16,7 +16,9 @@ import {
   triangle,
   barChartOutline,
   hammerOutline,
-  manOutline
+  manOutline,
+  trophyOutline,
+  peopleOutline
 } from "ionicons/icons";
 import Tab1 from "./pages/Tab1";
 import Tab2 from "./pages/Tab2";
@@ -46,22 +48,26 @@ const App: React.FC = () => (
     <IonReactRouter>
       <IonTabs>
         <IonRouterOutlet>
-          <Route path="/tab1" component={Tab1} exact={true} />
-          <Route path="/tab2" component={Tab2} exact={true} />
-          <Route path="/tab3" component={Tab3} />
-          <Route path="/" render={() => <Redirect to="/tab1" />} exact={true} />
+          <Route path="/stats" component={Tab1} exact={true} />
+          <Route path="/builds" component={Tab2} exact={true} />
+          <Route path="/civilizations" component={Tab3} />
+          <Route
+            path="/"
+            render={() => <Redirect to="/stats" />}
+            exact={true}
+          />
         </IonRouterOutlet>
         <IonTabBar slot="bottom">
-          <IonTabButton tab="tab1" href="/tab1">
-            <IonIcon icon={barChartOutline} />
+          <IonTabButton tab="tab1" href="/stats">
+            <IonIcon icon={trophyOutline} />
             <IonLabel>Stats</IonLabel>
           </IonTabButton>
-          <IonTabButton tab="tab2" href="/tab2">
-            <IonIcon icon={hammerOutline} />
+          <IonTabButton tab="tab2" href="/builds">
+            <IonIcon icon={barChartOutline} />
             <IonLabel>Builds</IonLabel>
           </IonTabButton>
-          <IonTabButton tab="tab3" href="/tab3">
-            <IonIcon icon={manOutline} />
+          <IonTabButton tab="tab3" href="/civilizations">
+            <IonIcon icon={peopleOutline} />
             <IonLabel>Civilizations</IonLabel>
           </IonTabButton>
         </IonTabBar>
