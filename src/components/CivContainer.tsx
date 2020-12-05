@@ -13,7 +13,9 @@ import {
   IonItemOptions,
   IonContent,
   IonSearchbar,
-  IonAvatar
+  IonAvatar,
+  IonRow,
+  IonCol
 } from "@ionic/react";
 
 interface ContainerProps {
@@ -125,17 +127,21 @@ const CivContainer: React.FC<ContainerProps> = ({ name }) => {
       <IonSearchbar></IonSearchbar>
       <IonContent>
         {/*-- List of Text Items --*/}
-        <IonList>
-          {civilizations.map(civ => {
-            return (
-              <IonItem>
-                <IonAvatar>
-                  <img src={civ.image}></img>
-                </IonAvatar>
-                <IonLabel>{civ.name}</IonLabel>
-              </IonItem>
-            );
-          })}
+        <IonList lines="none">
+          <IonRow>
+            {civilizations.map(civ => {
+              return (
+                <IonCol size="6" class="ion-text-center">
+                  <IonItem>
+                    <IonAvatar>
+                      <img src={civ.image}></img>
+                    </IonAvatar>
+                    <IonLabel>{civ.name}</IonLabel>
+                  </IonItem>
+                </IonCol>
+              );
+            })}
+          </IonRow>
         </IonList>
       </IonContent>
     </IonContent>

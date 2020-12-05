@@ -25,13 +25,14 @@ ion-tab-button {
 :root {
   --ion-font-family: "Castoro-Regular";
   /** custom **/
-  --ion-background-color: linear-gradient(
+  /* --ion-background-color: linear-gradient(
     90deg,
     rgb(226, 179, 120, 1) 0%,
     rgba(226, 179, 120, 1) 13.5%,
     rgba(226, 179, 120, 1) 33.33%,
     rgba(197, 148, 90, 1) 100%
-  );
+  ); */
+  --ion-background-color: rgb(209, 165, 110) 100%;
   --ion-font-family: "Oxygen";
 
   /** primary **/
