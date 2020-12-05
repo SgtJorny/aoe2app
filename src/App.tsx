@@ -18,7 +18,11 @@ import {
   hammerOutline,
   manOutline,
   trophyOutline,
-  peopleOutline
+  peopleOutline,
+  ellipseOutline,
+  ellipseSharp,
+  ellipsisHorizontalCircleOutline,
+  ellipsisHorizontalOutline
 } from "ionicons/icons";
 import Tab1 from "./pages/Tab1";
 import Tab2 from "./pages/Tab2";
@@ -42,6 +46,7 @@ import "@ionic/react/css/display.css";
 
 /* Theme variables */
 import "./theme/variables.css";
+import Tab4 from "./pages/Tab4";
 
 const App: React.FC = () => (
   <IonApp>
@@ -50,7 +55,8 @@ const App: React.FC = () => (
         <IonRouterOutlet>
           <Route path="/stats" component={Tab1} exact={true} />
           <Route path="/builds" component={Tab2} exact={true} />
-          <Route path="/civilizations" component={Tab3} />
+          <Route path="/civilizations" component={Tab3} exact={true} />
+          <Route path="/more" component={Tab4} exact={true} />
           <Route
             path="/"
             render={() => <Redirect to="/stats" />}
@@ -69,6 +75,10 @@ const App: React.FC = () => (
           <IonTabButton tab="tab3" href="/civilizations">
             <IonIcon icon={peopleOutline} />
             <IonLabel>Civilizations</IonLabel>
+          </IonTabButton>
+          <IonTabButton tab="tab4" href="/more">
+            <IonIcon icon={ellipsisHorizontalOutline} />
+            <IonLabel>More</IonLabel>
           </IonTabButton>
         </IonTabBar>
       </IonTabs>

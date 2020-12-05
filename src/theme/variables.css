@@ -17,7 +17,8 @@ http://ionicframework.com/docs/theming/ */
 }
 
 ion-title,
-ion-tab-button {
+ion-tab-button,
+h1 {
   /* --ion-font-family: "MedievalSharp-Regular"; */
   font-family: "MedievalSharp-Regular";
 }
