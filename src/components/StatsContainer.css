@@ -27,3 +27,8 @@ h1 {
   text-align: center;
   size: 34px;
 }
+
+ion-card {
+  margin-top: 0px;
+  margin-bottom: 0px;
+}

@@ -142,10 +142,13 @@ const StatsContainer: React.FC<ContainerProps> = ({ name }) => {
         <IonCard>
           {leaderboards.map(leader => {
             return (
-              <IonItem>
-                <IonAvatar>
+              <IonItem
+                href="/stats"
+                className={`${Number(leader.rank) % 2 ? "ion-activated" : ""}`}
+              >
+                {/* <IonAvatar>
                   <img src={leader.country}></img>
-                </IonAvatar>
+                </IonAvatar> */}
                 <IonLabel>
                   {leader.rank} - {leader.name} - {leader.rating} -{" "}
                   {Number((leader.wins / leader.games) * 100).toFixed(0)}% W/L
@@ -156,55 +159,67 @@ const StatsContainer: React.FC<ContainerProps> = ({ name }) => {
         </IonCard>
       </IonList>
       <h1>Team Random Map</h1>
-
       <IonList lines="none">
-        {leaderboards.map(leader => {
-          return (
-            <IonItem>
-              <IonAvatar>
-                <img src={leader.country}></img>
-              </IonAvatar>
-              <IonLabel>
-                {leader.rank} - {leader.name} - {leader.rating} -{" "}
-                {Number((leader.wins / leader.games) * 100).toFixed(0)}% W/L
-              </IonLabel>
-            </IonItem>
-          );
-        })}
+        <IonCard>
+          {leaderboards.map(leader => {
+            return (
+              <IonItem
+                href="/stats"
+                className={`${Number(leader.rank) % 2 ? "ion-activated" : ""}`}
+              >
+                {/* <IonAvatar>
+                  <img src={leader.country}></img>
+                </IonAvatar> */}
+                <IonLabel>
+                  {leader.rank} - {leader.name} - {leader.rating} -{" "}
+                  {Number((leader.wins / leader.games) * 100).toFixed(0)}% W/L
+                </IonLabel>
+              </IonItem>
+            );
+          })}
+        </IonCard>
       </IonList>
       <h1>Deathmatch</h1>
-
       <IonList lines="none">
-        {leaderboards.map(leader => {
-          return (
-            <IonItem>
-              <IonAvatar>
-                <img src={leader.country}></img>
-              </IonAvatar>
-              <IonLabel>
-                {leader.rank} - {leader.name} - {leader.rating} -{" "}
-                {Number((leader.wins / leader.games) * 100).toFixed(0)}% W/L
-              </IonLabel>
-            </IonItem>
-          );
-        })}
+        <IonCard>
+          {leaderboards.map(leader => {
+            return (
+              <IonItem
+                href="/stats"
+                className={`${Number(leader.rank) % 2 ? "ion-activated" : ""}`}
+              >
+                {/* <IonAvatar>
+                  <img src={leader.country}></img>
+                </IonAvatar> */}
+                <IonLabel>
+                  {leader.rank} - {leader.name} - {leader.rating} -{" "}
+                  {Number((leader.wins / leader.games) * 100).toFixed(0)}% W/L
+                </IonLabel>
+              </IonItem>
+            );
+          })}
+        </IonCard>
       </IonList>
       <h1>Team Deathmatch</h1>
-
       <IonList lines="none">
-        {leaderboards.map(leader => {
-          return (
-            <IonItem>
-              <IonAvatar>
-                <img src={leader.country}></img>
-              </IonAvatar>
-              <IonLabel>
-                {leader.rank} - {leader.name} - {leader.rating} -{" "}
-                {Number((leader.wins / leader.games) * 100).toFixed(0)}% W/L
-              </IonLabel>
-            </IonItem>
-          );
-        })}
+        <IonCard>
+          {leaderboards.map(leader => {
+            return (
+              <IonItem
+                href="/stats"
+                className={`${Number(leader.rank) % 2 ? "ion-activated" : ""}`}
+              >
+                {/* <IonAvatar>
+                  <img src={leader.country}></img>
+                </IonAvatar> */}
+                <IonLabel>
+                  {leader.rank} - {leader.name} - {leader.rating} -{" "}
+                  {Number((leader.wins / leader.games) * 100).toFixed(0)}% W/L
+                </IonLabel>
+              </IonItem>
+            );
+          })}
+        </IonCard>
       </IonList>
     </IonContent>
   );
