@@ -23,7 +23,7 @@ const Tab1: React.FC = () => {
             <IonTitle size="large">Stats</IonTitle>
           </IonToolbar>
         </IonHeader>
-        <StatsContainer name="Tab 1 page" />
+        <StatsContainer />
       </IonContent>
     </IonPage>
   );
