@@ -15,137 +15,69 @@ import {
   IonSearchbar,
   IonAvatar,
   IonRow,
-  IonCol
+  IonCol,
+  IonCard
 } from "@ionic/react";
+import axios from "axios";
 
-interface ContainerProps {
-  name: string;
-}
+// https://age-of-empires-2-api.herokuapp.com/api/v1/civilizations
 
-var civilizations = [
-  {
-    name: "Britons",
-    image:
-      "https://static.ageofempires.com/aoe/wp-content/uploads/2020/05/avatar_mayhem_lahire_ketchup.png"
-  },
-  {
-    name: "Byzantines",
-    image:
-      "https://static.ageofempires.com/aoe/wp-content/uploads/2020/05/avatar_mayhem_lahire_ketchup.png"
-  },
-  {
-    name: "Berbers",
-    image:
-      "https://static.ageofempires.com/aoe/wp-content/uploads/2020/05/avatar_mayhem_lahire_ketchup.png"
-  },
-  {
-    name: "Berbers",
-    image:
-      "https://static.ageofempires.com/aoe/wp-content/uploads/2020/05/avatar_mayhem_lahire_ketchup.png"
-  },
-  {
-    name: "Berbers",
-    image:
-      "https://static.ageofempires.com/aoe/wp-content/uploads/2020/05/avatar_mayhem_lahire_ketchup.png"
-  },
-  {
-    name: "Berbers",
-    image:
-      "https://static.ageofempires.com/aoe/wp-content/uploads/2020/05/avatar_mayhem_lahire_ketchup.png"
-  },
-  {
-    name: "Berbers",
-    image:
-      "https://static.ageofempires.com/aoe/wp-content/uploads/2020/05/avatar_mayhem_lahire_ketchup.png"
-  },
-  {
-    name: "Berbers",
-    image:
-      "https://static.ageofempires.com/aoe/wp-content/uploads/2020/05/avatar_mayhem_lahire_ketchup.png"
-  },
-  {
-    name: "Berbers",
-    image:
-      "https://static.ageofempires.com/aoe/wp-content/uploads/2020/05/avatar_mayhem_lahire_ketchup.png"
-  },
-  {
-    name: "Berbers",
-    image:
-      "https://static.ageofempires.com/aoe/wp-content/uploads/2020/05/avatar_mayhem_lahire_ketchup.png"
-  },
-  {
-    name: "Berbers",
-    image:
-      "https://static.ageofempires.com/aoe/wp-content/uploads/2020/05/avatar_mayhem_lahire_ketchup.png"
-  },
-  {
-    name: "Berbers",
-    image:
-      "https://static.ageofempires.com/aoe/wp-content/uploads/2020/05/avatar_mayhem_lahire_ketchup.png"
-  },
-  {
-    name: "Berbers",
-    image:
-      "https://static.ageofempires.com/aoe/wp-content/uploads/2020/05/avatar_mayhem_lahire_ketchup.png"
-  },
-  {
-    name: "Berbers",
-    image:
-      "https://static.ageofempires.com/aoe/wp-content/uploads/2020/05/avatar_mayhem_lahire_ketchup.png"
-  },
-  {
-    name: "Berbers",
-    image:
-      "https://static.ageofempires.com/aoe/wp-content/uploads/2020/05/avatar_mayhem_lahire_ketchup.png"
-  },
-  {
-    name: "Berbers",
-    image:
-      "https://static.ageofempires.com/aoe/wp-content/uploads/2020/05/avatar_mayhem_lahire_ketchup.png"
-  },
-  {
-    name: "Berbers",
-    image:
-      "https://static.ageofempires.com/aoe/wp-content/uploads/2020/05/avatar_mayhem_lahire_ketchup.png"
-  },
-  {
-    name: "Berbers",
-    image:
-      "https://static.ageofempires.com/aoe/wp-content/uploads/2020/05/avatar_mayhem_lahire_ketchup.png"
-  },
-  {
-    name: "Berbers",
-    image:
-      "https://static.ageofempires.com/aoe/wp-content/uploads/2020/05/avatar_mayhem_lahire_ketchup.png"
+export default class CivContainer extends React.Component {
+  state = {
+    civilizations: []
+  };
+
+  componentDidMount() {
+    axios
+      .get(
+        `https://cors-anywhere.herokuapp.com/https://age-of-empires-2-api.herokuapp.com/api/v1/civilizations`
+      )
+      .then(res => {
+        const civilizations = res.data.civilizations;
+        this.setState({ civilizations });
+        console.log(civilizations);
+      });
   }
-];
 
-const CivContainer: React.FC<ContainerProps> = ({ name }) => {
-  return (
-    <IonContent>
-      {/*-- List of Text Items --*/}
-      <IonSearchbar></IonSearchbar>
-      <IonContent>
-        {/*-- List of Text Items --*/}
-        <IonList lines="none">
-          <IonRow>
-            {civilizations.map(civ => {
-              return (
-                <IonCol size="6" class="ion-text-center">
-                  <IonItem>
-                    <IonAvatar>
-                      <img src={civ.image}></img>
-                    </IonAvatar>
-                    <IonLabel>{civ.name}</IonLabel>
-                  </IonItem>
-                </IonCol>
-              );
-            })}
-          </IonRow>
-        </IonList>
-      </IonContent>
-    </IonContent>
-  );
-};
-
-export default CivContainer;
+  render() {
+    if (this.state.civilizations) {
+      return (
+        <IonContent>
+          {/*-- List of Text Items --*/}
+          <IonSearchbar></IonSearchbar>
+          <IonContent>
+            {/*-- List of Text Items --*/}
+            <IonList lines="none">
+              <IonRow>
+                {this.state.civilizations.map((civ: any) => {
+                  return (
+                    <IonCol size="12" class="ion-text-center">
+                      <IonCard>
+                        <IonItem key={civ.id}>
+                          {/* <IonAvatar>
+                          <img src={civ.image}></img>
+                        </IonAvatar> */}
+                          <IonLabel>
+                            <h1>{civ.name}</h1>
+                            <h3>{civ.army_type}</h3>
+                            {civ.civilization_bonus.map(
+                              (bonus: any, i: any) => {
+                                return <p>-{civ.civilization_bonus[i]}</p>;
+                              }
+                            )}
+                            <h3>Team Bonus</h3>
+                            <p>-{civ.team_bonus}</p>
+                          </IonLabel>
+                        </IonItem>
+                      </IonCard>
+                    </IonCol>
+                  );
+                })}
+              </IonRow>
+            </IonList>
+          </IonContent>
+        </IonContent>
+      );
+    }
+  }
+}

@@ -26,3 +26,13 @@
 ion-label {
   margin-left: 8px;
 }
+
+h2,
+h3 {
+  text-align: center;
+  text-decoration: underline;
+}
+
+p {
+  color: black !important;
+}

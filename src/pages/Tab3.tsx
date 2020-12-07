@@ -23,7 +23,7 @@ const Tab3: React.FC = () => {
             <IonTitle size="large">Civilizations</IonTitle>
           </IonToolbar>
         </IonHeader>
-        <CivContainer name="Tab 3 page" />
+        <CivContainer />
       </IonContent>
     </IonPage>
   );
