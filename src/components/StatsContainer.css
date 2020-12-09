@@ -32,3 +32,7 @@ ion-card {
   margin-top: 0px;
   /* margin-bottom: 0px; */
 }
+
+.temp {
+  text-align: center;
+}

@@ -19,6 +19,7 @@ import {
   IonCard
 } from "@ionic/react";
 import axios from "axios";
+import * as _ from "lodash";
 
 interface ContainerProps {
   name: string;
@@ -132,9 +133,23 @@ interface ContainerProps {
 //   }
 // ];
 
+function ResultBanner(props: any) {
+  if (props.results.length == 0) {
+    return null;
+  }
+
+  if (props.results.length == 1) {
+    return <IonLabel>{props.results.length} result.</IonLabel>;
+  } else {
+    return <IonLabel>{props.results.length} results.</IonLabel>;
+  }
+}
+
 export default class StatsContainer extends React.Component {
   state = {
-    leaderboards: []
+    leaderboards: [],
+    loading: false,
+    results: []
   };
 
   componentDidMount() {
@@ -145,35 +160,48 @@ export default class StatsContainer extends React.Component {
     });
   }
 
-  // getLeaderboards = () => {
-  //   //validate inputs code not shown
-  //   const loginData = {
-  //     email: "",
-  //     password: ""
-  //   };
-  //   const api = axios.create({
-  //     baseURL: `https://aoe2.net/api`
-  //   });
-  //   api
-  //     .get("/leaderboard")
-  //     .then(res => {
-  //       leaderboards = res.data;
-  //       // history.push("/dashboard/" + email);
-  //     })
-  //     .catch(() => {
-  //       // setMessage("Auth failure! Please create an account");
-  //       // setIserror(true);
-  //     });
-  // };
+  onChangeHandler(e: any) {
+    this.search(e.target.value);
+    // this.setState({ value: e.target.value });
+  }
+
+  search(val: any) {
+    axios
+      .get(
+        `https://aoe2.net/api/leaderboard?game=aoe2de&leaderboard_id=4&search=` +
+          val
+      )
+      .then(res => {
+        const results = res.data.leaderboard;
+        this.setState({ results });
+        console.log(res.data);
+      });
+  }
 
   render() {
     if (this.state.leaderboards) {
       return (
         <IonContent>
           {/*-- List of Text Items --*/}
-          <IonSearchbar placeholder="Search player name, steam id..."></IonSearchbar>
+          <IonSearchbar
+            onIonChange={_.debounce(e => this.onChangeHandler(e), 1500)}
+            placeholder="Search player name..."
+          ></IonSearchbar>
+          {/* <IonLabel>{this.state.results.length} result(s).</IonLabel> */}
+          <ResultBanner results={this.state.results}></ResultBanner>
+          {this.state.results.map((result: any) => {
+            return (
+              <span>
+                <IonList>
+                  <IonItem key={result.profile_id}>
+                    #{result.rank} - {result.name} - {result.rating} -{" "}
+                    {Number((result.wins / result.games) * 100).toFixed(0)}%
+                  </IonItem>
+                </IonList>
+              </span>
+            );
+          })}
           <h1>Random Map</h1>
-
           <IonList lines="none">
             <IonCard>
               {this.state.leaderboards.map((leader: any) => {

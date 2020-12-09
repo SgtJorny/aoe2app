@@ -29,10 +29,11 @@ ion-label {
 
 h2,
 h3 {
-  text-align: center;
   text-decoration: underline;
+  color: black;
 }
 
-p {
+p,
+ion-card-subtitle {
   color: black !important;
 }
