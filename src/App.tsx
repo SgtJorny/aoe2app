@@ -22,11 +22,14 @@ import {
   ellipseOutline,
   ellipseSharp,
   ellipsisHorizontalCircleOutline,
-  ellipsisHorizontalOutline
+  ellipsisHorizontalOutline,
+  cellularOutline
 } from "ionicons/icons";
 import Tab1 from "./pages/Tab1";
 import Tab2 from "./pages/Tab2";
 import Tab3 from "./pages/Tab3";
+import Tab4 from "./pages/Tab4";
+import Tab5 from "./pages/Tab5";
 
 /* Core CSS required for Ionic components to work properly */
 import "@ionic/react/css/core.css";
@@ -46,7 +49,7 @@ import "@ionic/react/css/display.css";
 
 /* Theme variables */
 import "./theme/variables.css";
-import Tab4 from "./pages/Tab4";
+
 
 const App: React.FC = () => (
   <IonApp>
@@ -57,6 +60,7 @@ const App: React.FC = () => (
           <Route path="/builds" component={Tab2} exact={true} />
           <Route path="/civilizations" component={Tab3} exact={true} />
           <Route path="/more" component={Tab4} exact={true} />
+          <Route path="/match" component={Tab5} exact={true} />
           <Route
             path="/"
             render={() => <Redirect to="/stats" />}
@@ -79,6 +83,10 @@ const App: React.FC = () => (
           <IonTabButton tab="tab4" href="/more">
             <IonIcon icon={ellipsisHorizontalOutline} />
             <IonLabel>More</IonLabel>
+          </IonTabButton>
+          <IonTabButton tab="tab5" href="/match">
+            <IonIcon icon={cellularOutline} />
+            <IonLabel>Match</IonLabel>
           </IonTabButton>
         </IonTabBar>
       </IonTabs>

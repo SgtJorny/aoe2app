@@ -25,6 +25,10 @@ interface ContainerProps {
   name: string;
 }
 
+// https://aoe2.net/api/player/lastmatch?game=aoe2de&steam_id=76561198065536762
+// Carl Steam ID: 76561198065536762
+
+
 function ResultBanner(props: any) {
   if (props.results.length == 0) {
     return null;
